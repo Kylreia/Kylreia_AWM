@@ -37,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'world',
+    'pwa',
+    'awmProject',
+    'rest_framework',
     'crispy_forms',
     'leaflet',
+    'posts',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +82,8 @@ WSGI_APPLICATION = 'geodjango_tutorial.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'gis',
-        'HOST': 'localhost',
+        'NAME': 'posts',  # gis
+        'HOST': '0.0.0.0',  # localhost
         'USER': 'my_dock',
         'PASSWORD': 'my_dock',
         'PORT': 25432
@@ -132,13 +136,16 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_FAIL_SILENTLY = not DEBUG
 
 LEAFLET_CONFIG = {
-    'DEFAULT_CENTER': (53.0, -8.0),
-    'DEFAULT_ZOOM': 6,
-    'MIN_ZOOM': 3,
-    'MAX_ZOOM': 18,
-    'RESET_VIEW': False,
-    'SCALE': None,
-    'OPACITY': 0.5,
+    # "SPATIAL_EXTENT": (5.0, 44.0, 7.5, 46),
+    'DEFAULT_CENTER': (13.3888599, 52.5170365),  # (53.0, -8.0)
+    'DEFAULT_ZOOM': 16,  # 6
+    'MIN_ZOOM': 3,  # 3
+    'MAX_ZOOM': 20,  # 18
+    'DEFAULT_PRECISION': 6,
+    # 'RESET_VIEW': False,
+    'SCALE': "both",  # None
+    'ATTRIBUTION_PREFIX': 'powered by Django',
+    # 'OPACITY': 0.5,
 }
 
 LOGIN_REDIRECT_URL = 'home'

@@ -22,8 +22,14 @@ from world import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('posts.urls')),
+    path('', include('pwa.urls')),
+    path('api/v1/', include('location.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('updatedb/', views.update_location, name='updatedb'),
-
 ]
+
+
+
+
